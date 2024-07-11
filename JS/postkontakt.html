@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/238c829633.js" crossorigin="anonymous"></script>
+    <meta charset="utf-8">
+    <title>E-shop</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="body-size">
+    <div class="header">
+            <a href="shop.html"><img src="fotky/logo.png" alt="logo" style="height: 120px;"></a>
+            <div class="search"><input type="text" placeholder="Search...">
+                <button class="searchicon"><i class="fa fa-search"></i></button>
+            </div>
+            <div class="icons">
+                <div class="icon-container" onmouseenter="showOptions()" onmouseleave="hideOptions()">
+                    <i class="fa-regular fa-user fa-2xl"></i>
+                    <div class="options-container">
+                        <div class="option" onclick="showPopup('Register')">Registrovať</div>
+                        <div class="option" onclick="showPopup('Login')">Prihlásiť</div>
+                    </div>
+                </div>
+                <div class="overlay">
+                    <div class="popup-content">
+                        <div id="popup-content"></div>
+                        <div class="close-button" onclick="hidePopup()">X</div>
+                    </div>
+                </div>
+                <a href="cart.html"><i class="fa fa-shopping-cart fa-2xl"></i></a>
+                <a href="cart.html"><div id="cartAmount" class="cartAmount">0</div></a>
+            </div>
+    </div>
+<h2>Kontakt</h2>
+<h6 align="left" style="padding-top: 20px;">Vaša správa bola odoslaná, pre návrat na straknku kliklinite <a href="shop.html">tu.</a></h6>
+
+</div>
+<br><br>
+<footer>
+    <div class="footer-content">
+        <table class="odkazy">
+            <tr><td><a href="kontakt.html">Kontakt</a></td></tr>
+            <tr><td><a href="podmienky.html">Obchodné podmienky</a></td></tr>
+            <tr><td><a href="kontakt.html">Ochrana osobných údajov</a></td></tr>
+            <tr><td><a href="kontakt.html">Reklamačný poriadok</a></td></tr>
+            <tr><td><a href="kontakt.html">Najčastejšie otázky</a></td></tr>
+            <tr><td><a href="kontakt.html">Doručenie a platba</a></td></tr>
+            <tr><td><a href="kontakt.html">Predajne</a></td></tr>
+        </table>
+        <div class="cards">
+            <table>
+                <tr>
+                    <td><img alt="Visa" src="https://images.ctfassets.net/wl6q2in9o7k3/5PrfyA9tb7E5sX4VJOvUXU/5c7d1da15bcb3ea9bc846698b14da4c0/visa-card.svg?w=96"></td>
+                    <td><img alt="Mastercard" src="https://images.ctfassets.net/wl6q2in9o7k3/LwfpWwq8TXIansB91xPmD/d20403df94193ad356b8ea0a2df4e9f1/mastercard-card.svg?w=96"></td>
+                    <td><img alt="American Express" src="https://images.ctfassets.net/wl6q2in9o7k3/7shmU9DfzLDbUk4b6obKoX/d3dd37478163f60363dc9c982b6fd56e/amex-card.svg?w=96"></td>
+                    <td><img alt="Paypal" src="https://images.ctfassets.net/wl6q2in9o7k3/30jtAlNtcunM6pu0L8Xar/f528a13df611d9585b73a36fe35b8797/paypal-card.svg?w=96"></td>
+                    <td><img alt="Apple Pay" src="https://images.ctfassets.net/wl6q2in9o7k3/5AUy4FwF2qwCL5Xog760Xf/1839c30ce2dbe6b7119f4dab3f15920b/applepay-card.svg?w=96"></td>
+                </tr>
+        </table>
+        </div>
+        <div class="social">
+            <table>
+                <tr><td colspan="4" style="color: white;">Sledujte nás:</td></tr>
+                <tr>
+                    <td><a class="fa fa-facebook"></a></td>
+                    <td><a class="fa fa-twitter"></a></td>
+                    <td><a class="fa fa-instagram"></a></td>
+                    <td><a class="fa fa-pinterest"></a></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</footer>
+</body>
+</html>
