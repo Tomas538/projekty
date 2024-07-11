@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/238c829633.js" crossorigin="anonymous"></script>
+    <meta charset="utf-8">
+    <title>E-shop</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="banner">
+    <div class="banner-text">Pre zľavu 20% pri nákupe použite kupón: <b>"KUPON20"</b></div>
+</div>
+
+<div class="body-size">
+    <div class="header">
+            <a href="shop.html"><img src="fotky/logo.png" alt="logo" style="height: 120px;"></a>
+
+            <div class="search"><input type="text" placeholder="Search...">
+                <button class="searchicon"><i class="fa fa-search"></i></button>
+            </div>
+            <div class="icons">
+                <div class="icon-container" onmouseenter="showOptions()" onmouseleave="hideOptions()">
+                    <i class="fa-regular fa-user fa-2xl"></i>
+                    <div class="options-container">
+                        <div class="option" onclick="showPopup('Register')">Registrovať</div>
+                        <div class="option" onclick="showPopup('Login')">Prihlásiť</div>
+                    </div>
+                </div>
+                <div class="overlay">
+                    <div class="popup-content">
+                        <div id="popup-content"></div>
+                        <div class="close-button" onclick="hidePopup()">X</div>
+                    </div>
+                </div>
+                <a href="cart.html"><i class="fa fa-shopping-cart fa-2xl"></i></a>
+                <a href="cart.html"><div id="cartAmount" class="cartAmount">0</div></a>
+            </div>
+    </div>
+
+    <div class="slider">
+        <div class="slides">
+            <input type="radio" name="r-btn" id="r1">
+            <input type="radio" name="r-btn" id="r2">
+            <input type="radio" name="r-btn" id="r3">
+            
+            <div class="slide first"><img src="fotky/foto.png"></div>
+            <div class="slide"><img src="fotky/foto2.png"></div>
+            <div class="slide"><img src="fotky/foto3.png"></div>
+            
+            <div class="nav_auto">
+                <div class="a_btn1"></div>
+                <div class="a_btn2"></div>
+                <div class="a_btn3"></div>
+            </div>
+        </div>
+        <div class="nav_man">
+            <label for="r1" class="man_btn"></label>
+            <label for="r2" class="man_btn"></label>
+            <label for="r3" class="man_btn"></label>
+        </div>
+    </div>
+    <br>
+    <h1>Okuliare "Thug life"</h1>
+   <br>
+   <h2 style="text-align: justify;">Slnečné pixelové okuliare sú ideálne pre milovníkov hier alebo nadšencov meme. Sú vhodné pre ženy aj mužov.</h2>
+   <div class="shop" id="shop"></div>
+    <br><br>
+    <h2 style="text-align: justify;">Štýlové slnečné okuliare ocení každý veľký šéf, čo má život na háku. Žite ako šéf s okuliarmi Like a Boss!</h2>
+    <br><br>
+    <div><img class="okuliare2" src="fotky/okuliare2.jpg" alt="Ilustračný obrazok" onclick="openPopup(this.src)"></div>
+    <div class="popup" onclick="closePopup()">
+        <div class="popup-img">
+            <img id="popup-img">
+        </div>
+    </div>
+    <br><br>
+    <h2 style="text-align: justify;">Originálne okuliare sú založené na virálnych videách Thug Life, kde sa vyskytujú v grafickej podobe. Zoberte si ich so sebou na prechádzku mestom alebo párty. Staňte sa kráľom originality na ktorejkoľvek párty.</h2>
+    <br><br>
+</div>
+<footer>
+    <div class="footer-content">
+        <table class="odkazy">
+            <tr><td><a href="kontakt.html">Kontakt</a></td></tr>
+            <tr><td><a href="podmienky.html">Obchodné podmienky</a></td></tr>
+            <tr><td><a>Ochrana osobných údajov</a></td></tr>
+            <tr><td><a>Reklamačný poriadok</a></td></tr>
+            <tr><td><a>Najčastejšie otázky</a></td></tr>
+            <tr><td><a>Doručenie a platba</a></td></tr>
+            <tr><td><a>Predajne</a></td></tr>
+        </table>
+        <div class="cards">
+            <table>
+                <tr>
+                    <td><img alt="Visa" src="https://images.ctfassets.net/wl6q2in9o7k3/5PrfyA9tb7E5sX4VJOvUXU/5c7d1da15bcb3ea9bc846698b14da4c0/visa-card.svg?w=96"></td>
+                    <td><img alt="Mastercard" src="https://images.ctfassets.net/wl6q2in9o7k3/LwfpWwq8TXIansB91xPmD/d20403df94193ad356b8ea0a2df4e9f1/mastercard-card.svg?w=96"></td>
+                    <td><img alt="American Express" src="https://images.ctfassets.net/wl6q2in9o7k3/7shmU9DfzLDbUk4b6obKoX/d3dd37478163f60363dc9c982b6fd56e/amex-card.svg?w=96"></td>
+                    <td><img alt="Paypal" src="https://images.ctfassets.net/wl6q2in9o7k3/30jtAlNtcunM6pu0L8Xar/f528a13df611d9585b73a36fe35b8797/paypal-card.svg?w=96"></td>
+                    <td><img alt="Apple Pay" src="https://images.ctfassets.net/wl6q2in9o7k3/5AUy4FwF2qwCL5Xog760Xf/1839c30ce2dbe6b7119f4dab3f15920b/applepay-card.svg?w=96"></td>
+                </tr>
+        </table>
+        </div>
+        <div class="social">
+            <table>
+                <tr><td colspan="4" style="color: white;">Sledujte nás:</td></tr>
+                <tr>
+                    <td><a class="fa fa-facebook"></a></td>
+                    <td><a class="fa fa-twitter"></a></td>
+                    <td><a class="fa fa-instagram"></a></td>
+                    <td><a class="fa fa-pinterest"></a></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</footer>
+<script src="auto_slide.js"></script>
+<script src="register.js"></script>
+<script src="funkcie.js"></script>
+</body>
+</html>
