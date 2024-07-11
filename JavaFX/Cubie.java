@@ -41,7 +41,6 @@ public class Cubie {
         box.getTransforms().clear();
         box.getTransforms().add(new Translate(x * len, y * len, z * len));
     }
-
     // Gettery pre pozície
     public int getX() {
         return x;
