@@ -43,13 +43,11 @@ public class App extends Application {
           for (int y = -1; y <= 1; y++) {
               for (int z = -1; z <= 1; z++) {
                   cube[index] = new Cubie(x, y, z);
-                  group.getChildren().add(cube[index].getBox());
+                  group.getChildren().add(cube[index].getMeshView());
                   index++;
               }
           }
       }
-      cube[0].setFarba(true);
-      cube[2].setFarba(true);
       scene.setOnKeyPressed(this::keyPressed);
   }
 
@@ -59,6 +57,7 @@ void turnX(int index) {
     if (qb.getX() == index) {
         double newZ = qb.getY();
         double newY = -qb.getZ();
+        qb.rotateFacesX();
         qb.update(qb.getX(), (int) Math.round(newY), (int) Math.round(newZ));
       }
     }
@@ -69,6 +68,7 @@ void turnX(int index) {
       if (qb.getY() == index) {
           double newX = qb.getZ();
           double newZ = -qb.getX();
+          qb.rotateFacesY();
           qb.update((int) Math.round(newX), qb.getY(), (int) Math.round(newZ));
         }
       }
@@ -79,6 +79,7 @@ void turnX(int index) {
         if (qb.getZ() == index) {
             double newX = qb.getY();
             double newY = -qb.getX();
+            qb.rotateFacesZ();
             qb.update((int) Math.round(newX), (int) Math.round(newY), qb.getZ());
           }
         }
