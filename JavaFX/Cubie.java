@@ -11,11 +11,16 @@ public class Cubie {
     private int x, y, z;
     private final int len = 40;
     private int[] faceColors = {0, 1, 2, 3, 4, 5};
+    private final int initialX, initialY, initialZ;
+    private final int[] initialFaceColors = {0, 1, 2, 3, 4, 5};
 
     public Cubie(int x, int y, int z) {
         this.x = x;
         this.y = y;
         this.z = z;
+        this.initialX = x;
+        this.initialY = y;
+        this.initialZ = z;
         meshView = createColoredCube();
         meshView.getTransforms().add(new Translate(x * len, y * len, z * len));
     }
@@ -68,7 +73,8 @@ public class Cubie {
 
         return meshView;
     }
-    // vytvorenie farieb pre kocku
+
+    // vytvorenie farieb kocky
     private Image createDiffuseMap() {
         int width = 2;
         int height = 3;
@@ -100,12 +106,31 @@ public class Cubie {
         meshView.setMesh(createColoredCube().getMesh());
     }
 
+    // resetovanie kocky
+    public void reset() {
+        this.x = initialX;
+        this.y = initialY;
+        this.z = initialZ;
+        System.arraycopy(initialFaceColors, 0, faceColors, 0, faceColors.length);
+        meshView.getTransforms().clear();
+        meshView.getTransforms().add(new Translate(x * len, y * len, z * len));
+        meshView.setMesh(createColoredCube().getMesh());
+    }
+
+    // otáčanie strán kocky / zmena farieb
     public void rotateFacesX() {
         int temp = faceColors[4];
         faceColors[4] = faceColors[1];
         faceColors[1] = faceColors[5];
         faceColors[5] = faceColors[0];
         faceColors[0] = temp;
+    }
+    public void rotateFacesx() {
+        int temp = faceColors[0];
+        faceColors[0] = faceColors[5];
+        faceColors[5] = faceColors[1];
+        faceColors[1] = faceColors[4];
+        faceColors[4] = temp;
     }
 
     public void rotateFacesY() {
@@ -115,6 +140,13 @@ public class Cubie {
         faceColors[3] = faceColors[0];
         faceColors[0] = temp;
     }
+    public void rotateFacesy() {
+        int temp = faceColors[0];
+        faceColors[0] = faceColors[3];
+        faceColors[3] = faceColors[1];
+        faceColors[1] = faceColors[2];
+        faceColors[2] = temp;
+    }
 
     public void rotateFacesZ() {
         int temp = faceColors[4];
@@ -123,6 +155,14 @@ public class Cubie {
         faceColors[5] = faceColors[2];
         faceColors[2] = temp;
     }
+    public void rotateFacesz() {
+        int temp = faceColors[2];
+        faceColors[2] = faceColors[5];
+        faceColors[5] = faceColors[3];
+        faceColors[3] = faceColors[4];
+        faceColors[4] = temp;
+    }
+
     // Gettery pre pozície
     public int getX() {
         return x;
