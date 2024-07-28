@@ -9,6 +9,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.ScrollEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.transform.Rotate;
 import javafx.stage.Stage;
@@ -31,18 +32,28 @@ public class App extends Application {
         light.setLightOn(true);
         group.getChildren().add(light);
         
-        HBox buttonBox = new HBox(10);
+        // vytvorenie a umiestnenie tlačidiel
+        HBox rightRotation = new HBox(10);
+        HBox leftRotation = new HBox(10);
+        VBox res = new VBox(10);
+
+        VBox rotationBox = new VBox(10);
+        rotationBox.getChildren().addAll(rightRotation, leftRotation);
+
+        HBox buttons = new HBox();
+        buttons.getChildren().addAll(rotationBox, res);
+        buttons.setAlignment(Pos.CENTER);
 
         // pozicia kocky
-        group.translateXProperty().set(400); // 800 / 2
-        group.translateYProperty().set(275); // 550 / 2
+        group.translateXProperty().set(800 / 2);
+        group.translateYProperty().set(550 / 2);
         group.translateZProperty().set(0);
 
+        // rozloženie a zobrazenie okna
         BorderPane root = new BorderPane();
         root.setCenter(subScene);
-        root.setBottom(buttonBox);
-
-        Scene mainScene = new Scene(root, 800, 600);
+        root.setBottom(buttons);
+        Scene mainScene = new Scene(root, 800, 650);
 
         primaryStage.setTitle("3D Rubik's Cube");
         primaryStage.setScene(mainScene);
@@ -65,8 +76,10 @@ public class App extends Application {
         mainScene.setOnKeyPressed(this::keyPressed);
 
         // Tlačitka
-        buttonBox.setPadding(new Insets(15));
-        buttonBox.setAlignment(Pos.CENTER);
+        rightRotation.setPadding(new Insets(5));
+        leftRotation.setPadding(new Insets(5));
+        res.setPadding(new Insets(5));
+        res.setAlignment(Pos.CENTER);
         int w = 50;
         Button buttonX1 = new Button("Left"); buttonX1.setPrefWidth(w);
         Button buttonX2 = new Button("Right"); buttonX2.setPrefWidth(w);
@@ -76,7 +89,16 @@ public class App extends Application {
         Button buttonZ2 = new Button("Back"); buttonZ2.setPrefWidth(w);
         Button bReset = new Button("Reset"); bReset.setPrefWidth(w);
 
-        buttonBox.getChildren().addAll(buttonX1, buttonX2, buttonY1, buttonY2, buttonZ1, buttonZ2, bReset);
+        Button buttonx1 = new Button("Left'"); buttonx1.setPrefWidth(w);
+        Button buttonx2 = new Button("Right'"); buttonx2.setPrefWidth(w);
+        Button buttony1 = new Button("Top'"); buttony1.setPrefWidth(w);
+        Button buttony2 = new Button("Down'"); buttony2.setPrefWidth(w);
+        Button buttonz1 = new Button("Front'"); buttonz1.setPrefWidth(w);
+        Button buttonz2 = new Button("Back'"); buttonz2.setPrefWidth(w);
+
+        rightRotation.getChildren().addAll(buttonX1, buttonX2, buttonY1, buttonY2, buttonZ1, buttonZ2);
+        leftRotation.getChildren().addAll(buttonx1, buttonx2, buttony1, buttony2, buttonz1, buttonz2);
+        res.getChildren().add(bReset);
 
         buttonX1.setOnAction(e -> turnX(-1));
         buttonX2.setOnAction(e -> turnx(1));
@@ -85,6 +107,13 @@ public class App extends Application {
         buttonZ1.setOnAction(e -> turnZ(-1));
         buttonZ2.setOnAction(e -> turnz(1));
         bReset.setOnAction(e -> resetCube());
+
+        buttonx1.setOnAction(e -> turnx(-1));
+        buttonx2.setOnAction(e -> turnX(1));
+        buttony1.setOnAction(e -> turny(-1));
+        buttony2.setOnAction(e -> turnY(1));
+        buttonz1.setOnAction(e -> turnz(-1));
+        buttonz2.setOnAction(e -> turnZ(1));
     }
 
     void resetCube() {
