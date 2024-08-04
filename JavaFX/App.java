@@ -1,3 +1,5 @@
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
@@ -13,6 +15,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.transform.Rotate;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 public class App extends Application {
 
@@ -35,14 +38,9 @@ public class App extends Application {
         // vytvorenie a umiestnenie tlačidiel
         HBox rightRotation = new HBox(10);
         HBox leftRotation = new HBox(10);
-        VBox res = new VBox(10);
 
-        VBox rotationBox = new VBox(10);
-        rotationBox.getChildren().addAll(rightRotation, leftRotation);
-
-        HBox buttons = new HBox();
-        buttons.getChildren().addAll(rotationBox, res);
-        buttons.setAlignment(Pos.CENTER);
+        VBox buttons = new VBox(10);
+        buttons.getChildren().addAll(rightRotation, leftRotation);
 
         // pozicia kocky
         group.translateXProperty().set(800 / 2);
@@ -78,8 +76,8 @@ public class App extends Application {
         // Tlačitka
         rightRotation.setPadding(new Insets(5));
         leftRotation.setPadding(new Insets(5));
-        res.setPadding(new Insets(5));
-        res.setAlignment(Pos.CENTER);
+        rightRotation.setAlignment(Pos.CENTER);
+        leftRotation.setAlignment(Pos.CENTER);
         int w = 50;
         Button buttonX1 = new Button("Left"); buttonX1.setPrefWidth(w);
         Button buttonX2 = new Button("Right"); buttonX2.setPrefWidth(w);
@@ -95,10 +93,10 @@ public class App extends Application {
         Button buttony2 = new Button("Down'"); buttony2.setPrefWidth(w);
         Button buttonz1 = new Button("Front'"); buttonz1.setPrefWidth(w);
         Button buttonz2 = new Button("Back'"); buttonz2.setPrefWidth(w);
+        Button mix = new Button("Mix"); mix.setPrefWidth(w);
 
-        rightRotation.getChildren().addAll(buttonX1, buttonX2, buttonY1, buttonY2, buttonZ1, buttonZ2);
-        leftRotation.getChildren().addAll(buttonx1, buttonx2, buttony1, buttony2, buttonz1, buttonz2);
-        res.getChildren().add(bReset);
+        rightRotation.getChildren().addAll(buttonX1, buttonX2, buttonY1, buttonY2, buttonZ1, buttonZ2, bReset);
+        leftRotation.getChildren().addAll(buttonx1, buttonx2, buttony1, buttony2, buttonz1, buttonz2, mix);
 
         buttonX1.setOnAction(e -> turnX(-1));
         buttonX2.setOnAction(e -> turnx(1));
@@ -114,12 +112,48 @@ public class App extends Application {
         buttony2.setOnAction(e -> turnY(1));
         buttonz1.setOnAction(e -> turnz(-1));
         buttonz2.setOnAction(e -> turnZ(1));
+        mix.setOnAction(e -> mixCube());
     }
 
     void resetCube() {
         for (Cubie qb : cube) {
             qb.reset();
         }
+    }
+    void mixCube() {
+        Timeline timeline = new Timeline();
+        for (int i = 0; i < 100; i++) {
+            timeline.getKeyFrames().add(new KeyFrame(Duration.millis(i * 100), event -> {
+                int r = (int)(Math.random() * 12) + 1;
+                switch(r){
+                    case 1 : turnX(-1);
+                        break;
+                    case 2 : turnX(1);
+                        break;
+                    case 3 : turnx(-1);
+                        break;
+                    case 4 : turnx(1);
+                        break;
+                    case 5 : turnY(-1);
+                        break;
+                    case 6 : turnY(1);
+                        break;
+                    case 7 : turny(-1);
+                        break;
+                    case 8 : turny(1);
+                        break;
+                    case 9 : turnZ(-1);
+                        break;
+                    case 10 : turnZ(1);
+                        break;
+                    case 11 : turnz(-1);
+                        break;
+                    case 12 : turnz(1);
+                        break;
+                }
+            }));
+        }
+        timeline.play();
     }
     // otáčanie strán podľa X Y Z
     void turnX(int index) {
